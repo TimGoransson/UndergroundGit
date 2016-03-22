@@ -9,7 +9,7 @@ namespace Underground
     {
         public MovableGameObjects() : base()
         {
-
+            Blalalalala
         }
 
         public void Update()
