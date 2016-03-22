@@ -16,6 +16,7 @@ namespace Underground
         List<GameObject> gameObjects;
         List<Platform> platforms;
         Player pngMan;
+        
 
         public Game1()
         {
@@ -48,6 +49,7 @@ namespace Underground
             pngMan = new Player(new Vector2(100,100));
             platforms = new List<Platform>();
             platforms.Add(new Platform(TextureManager.texPlatform, new Vector2(100, 150)));
+            
             // TODO: use this.Content to load your game content here
         }
 
@@ -69,11 +71,12 @@ namespace Underground
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            pngMan.Update();
-            for (int i = platforms.Count - 1; i >= 0; i--)
-            {
-                platforms[i].Update();
-            }
+            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            pngMan.Update(elapsedTime);
+            //for (int i = platforms.Count - 1; i >= 0; i--)
+            //{
+            //    platforms[i].Update(elapsedTime);
+            //}
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -88,7 +91,7 @@ namespace Underground
             GraphicsDevice.Clear(Color.CornflowerBlue);
             for (int i = platforms.Count - 1; i >= 0; i--)
             {
-                platforms[i].Draw();
+                platforms[i].Draw(spriteBatch);
             }
             // TODO: Add your drawing code here
 

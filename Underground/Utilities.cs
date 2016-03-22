@@ -14,6 +14,7 @@ namespace Underground
         public const int screenWidth = 640;
         public const int screenHeight = 400;
         public const int tileSize = 48;
+        public const float gravity = 9.82f;
         public static Random rand = new Random();
 
         public static Vector2 GetIntersectionDepth(this Rectangle rectA, Rectangle rectB)

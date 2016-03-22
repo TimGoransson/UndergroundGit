@@ -37,9 +37,9 @@ namespace Underground
             this.sourceRect = Source;
         }
 
-        public abstract void Update();
+        public abstract void Update(float elapsedTime);
 
-        public abstract void Draw();
+        public abstract void Draw(SpriteBatch spriteBatch);
         
 
 

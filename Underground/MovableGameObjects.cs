@@ -12,19 +12,21 @@ namespace Underground
         protected bool active;
         protected Vector2 velocity;
         protected bool isOnGround;
+        protected SpriteEffects sfx;
+
         public MovableGameObjects(Texture2D tex, Vector2 pos) : base(tex, pos)
         {
-            
+            this.sfx = SpriteEffects.None;           
         }
 
-        public override void Update()
+        public override void Update(float elapsedTime)
         {
          
         }
 
-        public override void Draw()
+        public override void Draw(SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Draw(tex, HitBox, Color.White);
         }
         public virtual bool IsColliding(GameObject g)
         {

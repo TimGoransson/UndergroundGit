@@ -13,13 +13,14 @@ namespace Underground
         {
 
         }
-        public override void Update()
+        public override void Update(float elapsedTime)
         {
-
+            throw new NotImplementedException();
         }
 
-        public override void Draw()
+        public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(tex, HitBox, Color.White);
 
         }
     }
