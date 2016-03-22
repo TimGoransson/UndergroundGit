@@ -7,5 +7,6 @@ namespace Underground
 {
     class Player
     {
+        // Du kan vara en player.
     }
 }
