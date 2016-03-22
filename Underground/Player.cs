@@ -8,7 +8,7 @@ namespace Underground
     class Player
     {
         // Du kan vara en player.
-        //Din apa!
+
 
         // Saknar Peter :'( RIP med dip
     }
