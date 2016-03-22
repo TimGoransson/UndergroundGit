@@ -51,8 +51,8 @@ namespace Underground
         }
         public Color GetPixel(int col, int row)
         {
-            int c = col - Dest.X + sourceRect.X;
-            int r = row - Dest.Y + sourceRect.Y;
+            int c = col - Dest.X + Source.X;
+            int r = row - Dest.Y + Source.Y;
             return colorData[r * tex.Width + c];
         }
         public bool PixelCollision(GameObject G1, GameObject G2)

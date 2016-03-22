@@ -10,14 +10,15 @@ namespace Underground
 {
     class Player : MovableGameObjects
     {
-        // Du kan vara en player.
-        //Din apa!
-        bool alive;
         
+        bool alive;
+        KeyboardState ks;        
 
-        public Player(Vector2 pos) : base(TextureManager.texHero, pos)
+
+        public Player(Texture2D tex, Vector2 pos) : base(tex, pos)
         {
             this.frameSize = new Vector2(64, 64);
+
         }
         public override void HandleCollisionPlatform(Platform p)
         {
@@ -26,19 +27,20 @@ namespace Underground
         }
         public override void Update(float elapsedTime)
         {
-            if (KeyMouseReader.KeyPressed(Keys.Right))
+            ks = Keyboard.GetState();
+            if (ks.IsKeyDown(Keys.Right))
             {
                 sfx = SpriteEffects.None;
                 velocity.X = 3;
                 //frameTimer -= elapsedTime;
             }
-            else if (KeyMouseReader.KeyPressed(Keys.Left))
+            else if (ks.IsKeyDown(Keys.Left))
             {
                 sfx = SpriteEffects.FlipHorizontally;
                 velocity.X = -3;
                 //frameTimer -= elapsedTime;
             }
-            if (KeyMouseReader.KeyPressed(Keys.Up) && isOnGround)
+            if (ks.IsKeyDown(Keys.Up) && isOnGround)
             {
                 velocity.Y = -6;
                 isOnGround = false;
@@ -51,6 +53,9 @@ namespace Underground
             {
                 velocity.Y = 0;
             }
+            pos += velocity;
+            velocity.X = 0;
+            isOnGround = false;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

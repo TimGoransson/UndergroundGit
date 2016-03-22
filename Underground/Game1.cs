@@ -16,7 +16,8 @@ namespace Underground
         List<GameObject> gameObjects;
         List<Platform> platforms;
         Player pngMan;
-        
+        Texture2D texHero, texPlatform;
+        Keys[] pressedKeys = new Keys[5];
 
         public Game1()
         {
@@ -45,10 +46,13 @@ namespace Underground
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
+            texHero = Content.Load<Texture2D>("png");
+            texPlatform = Content.Load<Texture2D>("platform");
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            pngMan = new Player(new Vector2(100,100));
+            pngMan = new Player(texHero, new Vector2(100,100));
             platforms = new List<Platform>();
-            platforms.Add(new Platform(TextureManager.texPlatform, new Vector2(100, 150)));
+            platforms.Add(new Platform(texPlatform, new Vector2(100, 200)));
             
             // TODO: use this.Content to load your game content here
         }
@@ -72,6 +76,25 @@ namespace Underground
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            //{
+
+            //    Keyboard.GetState().GetPressedKeys();
+            for (int i = platforms.Count - 1; i >= 0; i--)
+            {
+                if (pngMan.IsColliding(platforms[i]))
+                {
+                    //if (pngMan.PixelCollision(pngMan,platforms[i]))
+                    //{
+                    //    pngMan.HandleCollisionPlatform(platforms[i]);
+
+                    //}
+                    pngMan.HandleCollisionPlatform(platforms[i]);
+                }
+                
+            }
+
+            //}
             pngMan.Update(elapsedTime);
             //for (int i = platforms.Count - 1; i >= 0; i--)
             //{
@@ -89,12 +112,15 @@ namespace Underground
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
+
             for (int i = platforms.Count - 1; i >= 0; i--)
             {
                 platforms[i].Draw(spriteBatch);
             }
+            pngMan.Draw(spriteBatch);
             // TODO: Add your drawing code here
-
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

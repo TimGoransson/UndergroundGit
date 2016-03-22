@@ -11,7 +11,7 @@ namespace Underground
     {
         public Platform(Texture2D tex, Vector2 pos) : base(tex, pos)
         {
-
+            this.frameSize = new Vector2(64, 64);
         }
         public override void Update(float elapsedTime)
         {
