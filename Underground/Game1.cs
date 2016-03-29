@@ -46,9 +46,8 @@ namespace Underground
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            texHero = Content.Load<Texture2D>("png");
-            texPlatform = Content.Load<Texture2D>("platform");
-
+            texHero = Content.Load<Texture2D>("red");
+            texPlatform = Content.Load<Texture2D>("NewBlock");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             pngMan = new Player(texHero, new Vector2(100,100));
             platforms = new List<Platform>();

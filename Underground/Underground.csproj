@@ -40,7 +40,6 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="GameObject.cs" />
-    <Compile Include="KeyMouseReader.cs" />
     <Compile Include="MovableGameObjects.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="Player.cs" />
@@ -63,7 +62,9 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\png.mgcontent" />
+    <None Include="Content\png.mgcontent">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Content\wall.mgcontent" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
